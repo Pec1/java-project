@@ -17,23 +17,23 @@ public class Main {
         Professor professor = new Professor("Jonas Arduino", "professor", "senha123");
         Turma turmaA = new Turma("Dev. Sistemas", professor);
         Aluno aluno = new Aluno("NomeAluno", "aluno", "senha123");
-    
+
+        professor.adicionarTurma(turmaA);
+
         LocalDate dataDeInicio = LocalDate.now();
         LocalDate dataDeTermino = LocalDate.now().plusDays(7);
+        Atividade atividade1  = professor.criarAtividade("Atividade 1", "Descricao da atividade", dataDeInicio, dataDeTermino, "Alta", turmaA);
         
-        Atividade atividade = professor.criarAtividade("Atividade 1", "Descricao da atividade", dataDeInicio, dataDeTermino, "Alta", turmaA);
-        
-        professor.adicionarTurma(turmaA);
         professor.adicionarAluno(turmaA, aluno);
-    
-        for (Turma turmas : aluno.getTurmas()) {
+
+        for(Turma turmas : professor.getTurmas()) {
             System.out.println(turmas.getNome());
         }
 
-        professor.removerAluno(turmaA, aluno);
+        professor.removerTurma(turmaA);
 
-        for (Turma turmas : aluno.getTurmas()) {
-            System.out.println(turmas.getNome());
+        for (Turma turma : professor.getTurmas()) {
+            System.out.println(turma.getNome());
         }
 
         listaDeUsuarios.add(professor);

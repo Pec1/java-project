@@ -32,12 +32,4 @@ public class Turma {
     public List<Atividade> getAtividades() {
         return atividades;
     }
-
-    public void adicionarAtividade(Atividade atividade) {
-        this.atividades.add(atividade);
-    }
-
-    public void removerAtividade(Atividade atividade) {
-        this.atividades.remove(atividade);
-    }
 }

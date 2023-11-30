@@ -9,7 +9,6 @@ public class Atividade {
     private LocalDate dataDeTermino;
     private String prioridade;
     private Professor professor;
-    private Aluno aluno;
     private Turma turma;
     private boolean concluida;
 
@@ -23,7 +22,6 @@ public class Atividade {
         this.dataDeTermino = dataDeTermino;
 
         this.professor = professor;
-        this.aluno = aluno;
         this.turma = turma;
     }
 
@@ -46,5 +44,17 @@ public class Atividade {
 
     public String getPrioridade() {
         return prioridade;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public Turma getTurma() {
+        return turma;
+    }
+
+    public boolean getConcluida() {
+        return concluida;
     }
 }

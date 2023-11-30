@@ -25,8 +25,12 @@ public class Professor extends Usuario {
     public Atividade criarAtividade(String titulo, String descricao, LocalDate dataDeInicio, LocalDate dataDeTermino, 
     String prioridade, Turma turma) {
         Atividade atividade = new Atividade(titulo, descricao, dataDeInicio, dataDeTermino, prioridade, this, turma);
-        turma.adicionarAtividade(atividade);
+        turma.getAtividades().add(atividade);
         return atividade;
+    }
+
+    public void removerAtividade(Turma turma, Atividade atividade) {
+        turma.getAtividades().remove(atividade);
     }
 
     public void adicionarAluno(Turma turma, Aluno aluno) {
@@ -46,13 +50,5 @@ public class Professor extends Usuario {
 
     public void removerTurma(Turma turma) {
         this.turmas.remove(turma);
-    }
-
-    public void adicionarAtividade(Turma turma, Atividade atividade) {
-        turma.adicionarAtividade(atividade);
-    }
-
-    public void removerAtividade(Turma turma, Atividade atividade) {
-        turma.removerAtividade(atividade);
     }
 }
