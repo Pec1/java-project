@@ -1,6 +1,7 @@
 package com.projeto_pratico.gui.factory;
 
 import com.projeto_pratico.interfaces.Menu;
+import com.projeto_pratico.model.Turma;
 import com.projeto_pratico.model.Usuario;
 
 import javax.swing.*;
@@ -10,12 +11,15 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class AlunoMenu implements Menu {
+    private List<Turma> listaTurmas;
     Usuario usuario;
 
-    public AlunoMenu(Usuario usuario) {
+    public AlunoMenu(Usuario usuario, List<Turma> listaTurmas) {
         this.usuario = usuario;
+        this.listaTurmas = listaTurmas;
     }
 
     @Override

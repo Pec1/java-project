@@ -1,6 +1,7 @@
 package com.projeto_pratico.gui.factory;
 
 import com.projeto_pratico.interfaces.Menu;
+import com.projeto_pratico.model.Turma;
 import com.projeto_pratico.model.Usuario;
 
 import javax.swing.*;
@@ -10,12 +11,15 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class ProfessorMenu implements Menu {
+    private List<Turma> listaTurmas;
     Usuario usuario;
 
-    public ProfessorMenu(Usuario usuario) {
+    public ProfessorMenu(Usuario usuario, List<Turma> listaTurmas) {
         this.usuario = usuario;
+        this.listaTurmas = listaTurmas;
     }
 
     @Override
@@ -44,11 +48,11 @@ public class ProfessorMenu implements Menu {
     private JPanel criarButtonPanel() {
         JPanel buttonPanel = new JPanel();
     
-        JButton visualizarAlunosButton = new JButton("Visualizar Alunos");
-        visualizarAlunosButton.addActionListener(new ActionListener() {
+        JButton visualizarTurmasButton = new JButton("Visualizar Turmas");
+        visualizarTurmasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Visualizar Alunos do Professor");
+                JOptionPane.showMessageDialog(null, "Visualizar Turmas do Professor");
             }
         });
     
@@ -68,7 +72,7 @@ public class ProfessorMenu implements Menu {
             }
         });
     
-        buttonPanel.add(visualizarAlunosButton);
+        buttonPanel.add(visualizarTurmasButton);
         buttonPanel.add(visualizarAtividadesButton);
         buttonPanel.add(criarAtividadeButton);
     

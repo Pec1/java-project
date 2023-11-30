@@ -14,7 +14,7 @@ public class Atividade {
     private boolean concluida;
 
     public Atividade(String titulo, String descricao, LocalDate dataDeInicio, LocalDate dataDeTermino, 
-    String prioridade, Professor professor, Aluno aluno, Turma turma) {
+    String prioridade, Professor professor, Turma turma) {
         this.titulo = titulo;
         this.prioridade = prioridade;
         this.descricao = descricao;

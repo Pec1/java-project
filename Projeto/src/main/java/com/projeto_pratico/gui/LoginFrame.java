@@ -1,6 +1,7 @@
 package com.projeto_pratico.gui;
 import javax.swing.*;
 
+import com.projeto_pratico.model.Turma;
 import com.projeto_pratico.model.Usuario;
 
 import java.awt.event.ActionEvent;
@@ -11,11 +12,13 @@ public class LoginFrame extends JFrame {
     private JTextField loginField;
     private JPasswordField senhaField;
 
+    private List<Turma> listaTurmas;
     private List<Usuario> listaDeUsuarios;
     private Usuario usuarioAutenticado;
 
-    public LoginFrame(List<Usuario> listaDeUsuarios) {
+    public LoginFrame(List<Usuario> listaDeUsuarios, List<Turma> listaTurmas) {
         super("Login");
+        this.listaTurmas = listaTurmas;
         this.listaDeUsuarios = listaDeUsuarios;
         setSize(300, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,7 +67,7 @@ public class LoginFrame extends JFrame {
     }
 
     private void exibirMenuPrincipal(String login) {
-        MenuPrincipalFrame menuFrame = new MenuPrincipalFrame(usuarioAutenticado);
+        MenuPrincipalFrame menuFrame = new MenuPrincipalFrame(usuarioAutenticado, listaTurmas);
         menuFrame.setVisible(true);
     }
 }
