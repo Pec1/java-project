@@ -24,4 +24,27 @@ public class Aluno extends Usuario {
         }
         return atividades;
     }
+
+    public void entrarTurma(List<Turma> listaTurmas, String idTurma) {
+        Turma turma = buscarTurma(listaTurmas, idTurma);
+        
+        if (turma != null) {
+            this.turmas.add(turma);
+            turma.getAlunos().add(this);
+        } else {
+            System.out.println("Turma não encontrada.");
+        }
+    }
+
+    private Turma buscarTurma(List<Turma> listaTurmas, String idTurma) {
+        for (Turma turma : listaTurmas) {
+            String turmaId = turma.getId();
+            System.out.println(turmaId);
+            
+            if (turmaId.equalsIgnoreCase(idTurma)) {
+                return turma;
+            }
+        }
+        return null;
+    }
 }

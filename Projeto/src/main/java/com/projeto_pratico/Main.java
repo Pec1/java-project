@@ -15,31 +15,44 @@ public class Main {
         List<Turma> listaTurmas = new ArrayList<>();
     
         Professor professor = new Professor("Jonas Arduino", "professor", "senha123");
-        Turma turmaA = new Turma("Dev. Sistemas", professor);
+        Turma turmab = new Turma("Dev. Sasdasdaistemas", professor );
         Aluno aluno = new Aluno("NomeAluno", "aluno", "senha123");
-
-        professor.adicionarTurma(turmaA);
 
         LocalDate dataDeInicio = LocalDate.now();
         LocalDate dataDeTermino = LocalDate.now().plusDays(7);
-        Atividade atividade1  = professor.criarAtividade("Atividade 1", "Descricao da atividade", dataDeInicio, dataDeTermino, "Alta", turmaA);
-        
-        professor.adicionarAluno(turmaA, aluno);
-
-        for(Turma turmas : professor.getTurmas()) {
-            System.out.println(turmas.getNome());
-        }
-
-        professor.removerTurma(turmaA);
-
-        for (Turma turma : professor.getTurmas()) {
-            System.out.println(turma.getNome());
-        }
+/*         Atividade atividade1  = professor.criarAtividade("Laço de repetição", "Descricao da atividade", dataDeInicio, dataDeTermino, "Alta", turmaA);
+ */        
+        Turma turmaA = professor.addTurma("Dev. Sistemas");
+        professor.addTurma(turmab);
 
         listaDeUsuarios.add(professor);
         listaDeUsuarios.add(aluno);
         listaTurmas.add(turmaA);
-    
+        listaTurmas.add(turmab);
+
+        aluno.entrarTurma(listaTurmas, turmaA.getId());
+
+        for (Turma turmas : aluno.getTurmas()) {
+            System.out.println("turmas: " + turmas.getNome());
+        }
+
+        /*for (Turma turma : listaTurmas) {
+            System.out.println("Turma: " + turma.getNome());
+            System.out.println("Professor: " + turma.getProfessor().getNome());
+            System.out.println("Alunos: " + turma.getAlunos().size());
+            int count = 1;
+            for (Aluno alunos : turma.getAlunos()) {
+                System.out.println(count + "- " + alunos.getNome());
+                count++;
+            }
+            System.out.println("Atividades: " + turma.getAtividades().size());
+           for (int i = 0; i < turma.getAtividades().size(); i++) {
+                System.out.print(i + 1);
+            } 
+            System.out.println();
+        }*/
+        
+        MenuPrincipalFrame menuFrame = new MenuPrincipalFrame(professor, listaTurmas);
         /* SwingUtilities.invokeLater(() -> new LoginFrame(listaDeUsuarios, listaTurmas)); */
     }
 }

@@ -29,8 +29,8 @@ public class LoginFrame extends JFrame {
         JLabel senhaLabel = new JLabel("Senha:");
         loginField = new JTextField(15);
         senhaField = new JPasswordField(15);
-        JButton loginButton = new JButton("Login");
 
+        JButton loginButton = new JButton("Login");
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -39,7 +39,7 @@ public class LoginFrame extends JFrame {
 
                 if (autenticarUsuario(login, senha)) {
                     dispose();
-                    exibirMenuPrincipal(login);
+                    exibirMenuPrincipal();
                 } else {
                     JOptionPane.showMessageDialog(LoginFrame.this, "Login ou senha incorretos", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
@@ -66,7 +66,7 @@ public class LoginFrame extends JFrame {
         return false;
     }
 
-    private void exibirMenuPrincipal(String login) {
+    private void exibirMenuPrincipal() {
         MenuPrincipalFrame menuFrame = new MenuPrincipalFrame(usuarioAutenticado, listaTurmas);
         menuFrame.setVisible(true);
     }

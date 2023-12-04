@@ -5,7 +5,6 @@ import com.projeto_pratico.interfaces.Menu;
 import com.projeto_pratico.model.Turma;
 import com.projeto_pratico.model.Usuario;
 
-import javafx.scene.text.Font;
 import java.util.List;
 
 import java.awt.*;
