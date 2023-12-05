@@ -1,24 +1,26 @@
-package com.projeto_pratico.gui;
+package com.projeto_pratico;
+
 import javax.swing.*;
 
-import com.projeto_pratico.model.Turma;
-import com.projeto_pratico.model.Usuario;
+import com.projeto_pratico.factory.*;
+
+import com.projeto_pratico.model.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class LoginFrame extends JFrame {
+public class Login extends JFrame {
+    private static MenuCreator menuCreator;
+
     private JTextField loginField;
     private JPasswordField senhaField;
 
-    private List<Turma> listaTurmas;
     private List<Usuario> listaDeUsuarios;
     private Usuario usuarioAutenticado;
 
-    public LoginFrame(List<Usuario> listaDeUsuarios, List<Turma> listaTurmas) {
+    public Login(List<Usuario> listaDeUsuarios) {
         super("Login");
-        this.listaTurmas = listaTurmas;
         this.listaDeUsuarios = listaDeUsuarios;
         setSize(300, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,7 +43,7 @@ public class LoginFrame extends JFrame {
                     dispose();
                     exibirMenuPrincipal();
                 } else {
-                    JOptionPane.showMessageDialog(LoginFrame.this, "Login ou senha incorretos", "Erro", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(Login.this, "Login ou senha incorretos", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -54,6 +56,7 @@ public class LoginFrame extends JFrame {
 
         add(panel);
         setVisible(true);
+        
     }
 
     private boolean autenticarUsuario(String login, String senha) {
@@ -67,7 +70,12 @@ public class LoginFrame extends JFrame {
     }
 
     private void exibirMenuPrincipal() {
-        MenuPrincipalFrame menuFrame = new MenuPrincipalFrame(usuarioAutenticado, listaTurmas);
-        menuFrame.setVisible(true);
+        if (usuarioAutenticado instanceof Aluno) {
+            menuCreator =  new AlunoMCreator();
+            menuCreator.renderWindow((Aluno) usuarioAutenticado);
+        } else if (usuarioAutenticado instanceof Professor) {
+            menuCreator =  new ProfessorMCreator();
+            menuCreator.renderWindow((Professor) usuarioAutenticado);
+        }
     }
 }

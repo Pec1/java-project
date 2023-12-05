@@ -1,16 +1,25 @@
 package com.projeto_pratico;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.SwingUtilities;
 
-import com.projeto_pratico.gui.*;
 import com.projeto_pratico.model.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        List<Usuario> listaDeUsuarios = new ArrayList<>();
+    
+        Professor professor = new Professor("Jonas Arduino", "professor", "senha123");
+        Aluno aluno = new Aluno("NomeAluno", "aluno", "senha123");
+
+        listaDeUsuarios.add(professor);
+        listaDeUsuarios.add(aluno);
+        
+        SwingUtilities.invokeLater(() -> new Login(listaDeUsuarios));
+    }
+/*     public static void main(String[] args) {
         List<Usuario> listaDeUsuarios = new ArrayList<>();
         List<Turma> listaTurmas = new ArrayList<>();
     
@@ -20,8 +29,7 @@ public class Main {
 
         LocalDate dataDeInicio = LocalDate.now();
         LocalDate dataDeTermino = LocalDate.now().plusDays(7);
-/*         Atividade atividade1  = professor.criarAtividade("Laço de repetição", "Descricao da atividade", dataDeInicio, dataDeTermino, "Alta", turmaA);
- */        
+        Atividade atividade1  = professor.criarAtividade("Laço de repetição", "Descricao da atividade", dataDeInicio, dataDeTermino, "Alta", turmaA);       
         Turma turmaA = professor.addTurma("Dev. Sistemas");
         professor.addTurma(turmab);
 
@@ -36,7 +44,7 @@ public class Main {
             System.out.println("turmas: " + turmas.getNome());
         }
 
-        /*for (Turma turma : listaTurmas) {
+        for (Turma turma : listaTurmas) {
             System.out.println("Turma: " + turma.getNome());
             System.out.println("Professor: " + turma.getProfessor().getNome());
             System.out.println("Alunos: " + turma.getAlunos().size());
@@ -50,9 +58,9 @@ public class Main {
                 System.out.print(i + 1);
             } 
             System.out.println();
-        }*/
+        }
         
         MenuPrincipalFrame menuFrame = new MenuPrincipalFrame(professor, listaTurmas);
-        /* SwingUtilities.invokeLater(() -> new LoginFrame(listaDeUsuarios, listaTurmas)); */
-    }
+        SwingUtilities.invokeLater(() -> new LoginFrame(listaDeUsuarios, listaTurmas)); 
+    } */
 }
