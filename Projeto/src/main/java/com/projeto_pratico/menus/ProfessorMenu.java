@@ -12,17 +12,15 @@ import javax.swing.border.EmptyBorder;
 import com.projeto_pratico.model.*;
 
 public class ProfessorMenu implements Menu{
-/*     JPanel panel = new JPanel();
-   
-    JButton button;
- */ JFrame frame = new JFrame();
+
+    JPanel panel = new JPanel();
+    JFrame frame = new JFrame();
     private Professor professor;
 
     @Override
     public void render(Usuario usuario) {
         this.professor = (Professor) usuario;
 
-        JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
 
         JLabel[] labels = criarLabelArea();
