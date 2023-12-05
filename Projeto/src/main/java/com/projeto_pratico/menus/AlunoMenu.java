@@ -2,19 +2,10 @@ package com.projeto_pratico.menus;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import com.projeto_pratico.model.Aluno;
-import com.projeto_pratico.model.Professor;
-import com.projeto_pratico.model.Usuario;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import com.projeto_pratico.model.*;
 
 public class AlunoMenu implements Menu {
     JPanel panel = new JPanel();

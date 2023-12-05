@@ -24,9 +24,13 @@ public class Main {
         LocalDate dataDeInicio = LocalDate.now();
         LocalDate dataDeTermino = LocalDate.now().plusDays(7);
         Atividade atividade1  = professor.criarAtividade("Laço de repetição", "Descricao da atividade", dataDeInicio, dataDeTermino, "Alta", turmaA);
-        
+
         listaDeUsuarios.add(professor);
         listaDeUsuarios.add(aluno);
+
+        for (Atividade atividade : aluno.getAtividades()){
+            System.out.println(atividade.getTitulo());
+        }
         
         SwingUtilities.invokeLater(() -> new Login(listaDeUsuarios));
     }
