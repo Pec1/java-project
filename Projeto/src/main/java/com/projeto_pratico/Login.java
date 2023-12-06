@@ -22,7 +22,7 @@ public class Login extends JFrame {
     public Login(List<Usuario> listaDeUsuarios) {
         super("Login");
         this.listaDeUsuarios = listaDeUsuarios;
-        setSize(300, 150);
+        setSize(200, 180);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -74,7 +74,7 @@ public class Login extends JFrame {
             menuCreator =  new AlunoMCreator();
             menuCreator.renderWindow((Aluno) usuarioAutenticado);
         } else if (usuarioAutenticado instanceof Professor) {
-            menuCreator =  new ProfessorMCreator();
+            menuCreator =  new TesteMProfessor();
             menuCreator.renderWindow((Professor) usuarioAutenticado);
         }
     }

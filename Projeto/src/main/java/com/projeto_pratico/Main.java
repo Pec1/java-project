@@ -6,6 +6,9 @@ import java.util.List;
 
 import javax.swing.SwingUtilities;
 
+import com.projeto_pratico.factory.MenuCreator;
+import com.projeto_pratico.factory.ProfessorMCreator;
+import com.projeto_pratico.menus.TesteProfessor;
 import com.projeto_pratico.model.*;
 
 public class Main {
@@ -18,6 +21,10 @@ public class Main {
         Turma turmaA = professor.addTurma("Dev. Sistemas");
 
         Turma turmab = new Turma("Dev. Sasdasdaistemas", professor );
+        professor.addTurma(turmab);
+        professor.addTurma(turmab);
+        professor.addTurma(turmab);
+        professor.addTurma(turmab);
         professor.addTurma(turmab);
 
 
