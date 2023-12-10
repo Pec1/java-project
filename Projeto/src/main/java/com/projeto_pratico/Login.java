@@ -16,13 +16,18 @@ public class Login extends JFrame {
     private JTextField loginField;
     private JPasswordField senhaField;
 
+    private List<Turma> todasTurmas;
+
     private List<Usuario> listaDeUsuarios;
     private Usuario usuarioAutenticado;
 
-    public Login(List<Usuario> listaDeUsuarios) {
+    public Login(List<Usuario> listaDeUsuarios, List<Turma> todasTurmas) {
         super("Login");
         this.listaDeUsuarios = listaDeUsuarios;
-        setSize(200, 180);
+
+        this.todasTurmas = todasTurmas;
+
+        setSize(250, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -43,7 +48,8 @@ public class Login extends JFrame {
                     dispose();
                     exibirMenuPrincipal();
                 } else {
-                    JOptionPane.showMessageDialog(Login.this, "Login ou senha incorretos", "Erro", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(Login.this, "Login ou senha incorretos", "Erro",
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -56,7 +62,7 @@ public class Login extends JFrame {
 
         add(panel);
         setVisible(true);
-        
+
     }
 
     private boolean autenticarUsuario(String login, String senha) {
@@ -71,11 +77,11 @@ public class Login extends JFrame {
 
     private void exibirMenuPrincipal() {
         if (usuarioAutenticado instanceof Aluno) {
-            menuCreator =  new AlunoMCreator();
-            menuCreator.renderWindow((Aluno) usuarioAutenticado);
+            menuCreator = new AlunoMCreator();
+            menuCreator.renderWindow((Aluno) usuarioAutenticado, todasTurmas);
         } else if (usuarioAutenticado instanceof Professor) {
-            menuCreator =  new TesteMProfessor();
-            menuCreator.renderWindow((Professor) usuarioAutenticado);
+            menuCreator = new ProfessorMCreator();
+            menuCreator.renderWindow((Professor) usuarioAutenticado, null);
         }
     }
 }

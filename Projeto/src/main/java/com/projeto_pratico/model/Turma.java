@@ -19,6 +19,29 @@ public class Turma {
         this.atividades = new ArrayList<>();
     }
 
+    public static Turma buscarTurma(List<Turma> turmas, String id) {
+        for (Turma turma : turmas) {
+            if (turma.getId().equals(id)) {
+                return turma;
+            }
+        }
+        return null;
+    }
+
+    public void addAluno(Aluno aluno) {
+        if(!this.alunos.contains(aluno)) {
+            this.alunos.add(aluno);
+            aluno.setTurma(this);
+        }
+    }
+
+    public void removeAluno(Aluno aluno) {
+        if(this.alunos.contains(aluno)) {
+            this.alunos.remove(aluno);
+            aluno.getTurmas().remove(this);
+        }
+    }
+
     /* gets // sets */
     public String getId() {
         return id;

@@ -1,7 +1,7 @@
 package com.projeto_pratico.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-//import java.util.ArrayList;
 import java.util.List;
 
 public class Aluno extends Usuario {  
@@ -17,6 +17,10 @@ public class Aluno extends Usuario {
         return turmas;
     }
 
+    public void setTurma(Turma turma) {
+        this.turmas.add(turma);
+    }
+
     public List<Atividade> getAtividades() {
         List<Atividade> atividades = new ArrayList<>();
         for (Turma turma : this.turmas) {
@@ -25,26 +29,16 @@ public class Aluno extends Usuario {
         return atividades;
     }
 
-    public void entrarTurma(List<Turma> listaTurmas, String idTurma) {
-        Turma turma = buscarTurma(listaTurmas, idTurma);
-        
-        if (turma != null) {
-            this.turmas.add(turma);
-            turma.getAlunos().add(this);
-        } else {
-            System.out.println("Turma não encontrada.");
+    public void addResposta(String idAtv, String resposta, LocalDate entrega) {
+        Atividade atividade = Atividade.buscarAtividade(getAtividades(), idAtv);
+    
+        if (atividade != null) {
+            atividade.getRespostas().put(getNome(), resposta);
+            atividade.setDataEntregaAluno(entrega);
         }
     }
-
-    private Turma buscarTurma(List<Turma> listaTurmas, String idTurma) {
-        for (Turma turma : listaTurmas) {
-            String turmaId = turma.getId();
-            System.out.println(turmaId);
-            
-            if (turmaId.equalsIgnoreCase(idTurma)) {
-                return turma;
-            }
-        }
-        return null;
+    
+    public void concluirAtividade(Atividade atividade) {
+        atividade.marcarComoConcluida();
     }
 }
